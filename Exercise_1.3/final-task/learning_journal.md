@@ -24,6 +24,24 @@ Another challenge was efficiently removing duplicate ingredients while preservin
 
 - **Use of underscore `_`:** I continued using `_` for ignored variables when unpacking, which improves code readability by indicating that the variable is not used.
 
+## Reflection Questions
+
+1. **What is an operator in Python and what types are there?**
+
+   An operator in Python is a symbol that performs operations on variables and values. Types include arithmetic (`+`, `-`, `*`, `/`), comparison (`==`, `!=`, `<`, `>`), logical (`and`, `or`, `not`), assignment (`=`), and others like membership and identity operators.
+
+2. **What is a function and why do we use them?**
+
+   A function is a reusable block of code that performs a specific task. We use functions to organize code, reduce repetition, improve readability, and allow easier debugging and maintenance.
+
+3. **How can you handle errors when getting user input?**
+
+   Errors can be handled using `try-except` blocks that catch exceptions like `ValueError` when user input is not as expected. This allows the program to continue running and prompt the user appropriately instead of crashing.
+
+4. **How did you test your code and what was the result?**
+
+   I tested the code by entering various inputs, including valid data and invalid cases like strings instead of numbers. The program correctly handled exceptions without crashing and provided meaningful error messages to the user. The data was collected, cleaned, and stored as expected.
+
 ## What would I do differently next time?
 
 Next time, I would focus earlier on implementing comprehensive input validation and exception handling to improve user experience. I would also modularize the code further, breaking down input and processing logic into smaller functions for better readability and testability.
