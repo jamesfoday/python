@@ -12,28 +12,32 @@ def search_ingredient(data):
         print("No ingredients found in data.")
         return
 
+    # Use 1-based indexing for user-friendly numbering
     print("Available ingredients:")
-    for idx, ingredient in enumerate(ingredients):
-        print(f"{idx}: {ingredient}")
+    for idx, ingredient in enumerate(ingredients, start=1):
+        print(f"{idx}. {ingredient}")
 
     try:
         choice = int(input("Enter the number corresponding to the ingredient you want to search: "))
-        ingredient_searched = ingredients[choice]
-    except (ValueError, IndexError):
-        print("Invalid input! Please enter a valid number from the list.")
+        if choice < 1 or choice > len(ingredients):
+            print("Selection out of range. Please select a valid number.")
+            return
+        ingredient_searched = ingredients[choice - 1]
+    except ValueError:
+        print("Invalid input! Please enter a number.")
         return
-    else:
-        print(f"\nRecipes containing '{ingredient_searched}':")
-        found = False
-        for recipe in data.get('recipes_list', []):
-            if ingredient_searched in recipe['ingredients']:
-                display_recipe(recipe)
-                found = True
-        if not found:
-            print("No recipes found with that ingredient.")
+
+    print(f"\nRecipes containing '{ingredient_searched}':")
+    found = False
+    for recipe in data.get('recipes_list', []):
+        if ingredient_searched in recipe['ingredients']:
+            display_recipe(recipe)
+            found = True
+    if not found:
+        print("No recipes found with that ingredient.")
 
 def main():
-    filename = input("Enter the binary filename containing recipes: ")
+    filename = input("Enter the binary filename containing recipes: ").strip()
 
     try:
         with open(filename, 'rb') as file:
